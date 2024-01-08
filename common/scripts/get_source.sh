@@ -166,7 +166,7 @@ get_grub_src()
 get_fwts_src()
 {
     echo "Downloading FWTS source code. TAG : ${FWTS_SRC_TAG}"
-    git clone --single-branch git://kernel.ubuntu.com/hwe/fwts.git
+    git clone --single-branch https://github.com/fwts/fwts.git
     pushd $TOP_DIR/fwts
     git checkout $FWTS_SRC_TAG
     git submodule update --init
@@ -184,13 +184,8 @@ get_sct_src()
 
 get_linux-acs_src()
 {
-  if [ -z $ARM_LINUX_ACS_TAG ]; then
-      echo "Downloading Arm Linux ACS source code."
-      git clone --depth 1 https://gitlab.arm.com/linux-arm/linux-acs linux-acs
-  else
-      echo "Downloading Arm Linux ACS source code. TAG : ${ARM_LINUX_ACS_TAG}"
-      git clone --depth 1 --branch ${ARM_LINUX_ACS_TAG} https://gitlab.arm.com/linux-arm/linux-acs linux-acs
-  fi
+  echo "Downloading Arm Linux ACS source code."
+  git clone --depth 1 https://gitlab.arm.com/linux-arm/linux-acs linux-acs
 
   if [ $TARGET_ARCH != "arm" ]; then
     pushd $TOP_DIR/linux-${LINUX_KERNEL_VERSION}
