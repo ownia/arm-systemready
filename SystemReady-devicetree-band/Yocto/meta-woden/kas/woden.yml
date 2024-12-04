@@ -38,8 +38,8 @@ repos:
 
 local_conf_header:
   threads: |
-    BB_NUMBER_THREADS = "16"
-    PARALLEL_MAKE = "-j16"
+    BB_NUMBER_THREADS = "4"
+    PARALLEL_MAKE = "-j4"
 
 distro: woden
 machine: genericarm64
